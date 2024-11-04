@@ -25,7 +25,7 @@
     // getters
     - (double)  getX;
     - (double)  getY;
-    - (int)     getWidth;
+    - (int)     getWidth;   
     - (int)     getHeight;
     - (bool)    getOnPlatform;
     - (Vector2) getVelocity;

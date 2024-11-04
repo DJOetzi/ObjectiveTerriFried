@@ -35,4 +35,28 @@
         }
         return self;
     }
+
+    - (double)  getX {
+        return self.x;
+    }
+    
+    - (double)  getY {
+        return self.y;
+    }
+    
+    - (int)     getWidth {
+        return self.width;
+    }
+
+    - (int)     getHeight {
+        return self.height;
+    }
+
+    - (bool)    getOnPlatform {
+        return self.onPlatform;
+    }
+    
+    - (Vector2) getVelocity {
+        return self.velocity;
+    }
 @end
