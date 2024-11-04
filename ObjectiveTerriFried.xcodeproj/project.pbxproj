@@ -33,9 +33,22 @@
 		A486DA742CD8D26800BA6505 /* libraylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libraylib.a; path = ../raylib/src/libraylib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		A436C24B2CD8E0A80065EF79 /* Exceptions for "ObjectiveTerriFried" folder in "Compile Sources" phase from "ObjectiveTerriFried" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = A486DA5F2CD8CA6D00BA6505 /* Sources */;
+			membershipExceptions = (
+				engine/utility/utility.h,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A486DA652CD8CA6D00BA6505 /* ObjectiveTerriFried */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A436C24B2CD8E0A80065EF79 /* Exceptions for "ObjectiveTerriFried" folder in "Compile Sources" phase from "ObjectiveTerriFried" target */,
+			);
 			path = ObjectiveTerriFried;
 			sourceTree = "<group>";
 		};
