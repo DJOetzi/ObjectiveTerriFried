@@ -10,6 +10,8 @@
 #import "utility/utility.h"
 
 @implementation Player
+
+    // constructors
     - (id) init {
         if ( self = [super init] ) {
             self.x = 0;
@@ -36,6 +38,7 @@
         return self;
     }
 
+    // getters
     - (double)  getX {
         return self.x;
     }
@@ -59,4 +62,8 @@
     - (Vector2) getVelocity {
         return self.velocity;
     }
+
+    // setters
+
+    // misc
 @end
