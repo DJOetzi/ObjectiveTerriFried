@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A486DA6F2CD8D24500BA6505 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A486DA6E2CD8D24500BA6505 /* OpenGL.framework */; };
+		A486DA712CD8D24D00BA6505 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A486DA702CD8D24D00BA6505 /* IOKit.framework */; };
+		A486DA732CD8D25400BA6505 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A486DA722CD8D25400BA6505 /* Cocoa.framework */; };
+		A486DA762CD8D28900BA6505 /* libraylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A486DA742CD8D26800BA6505 /* libraylib.a */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		A486DA612CD8CA6D00BA6505 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,6 +27,10 @@
 
 /* Begin PBXFileReference section */
 		A486DA632CD8CA6D00BA6505 /* ObjectiveTerriFried */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjectiveTerriFried; sourceTree = BUILT_PRODUCTS_DIR; };
+		A486DA6E2CD8D24500BA6505 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		A486DA702CD8D24D00BA6505 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		A486DA722CD8D25400BA6505 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		A486DA742CD8D26800BA6505 /* libraylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libraylib.a; path = ../raylib/src/libraylib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -35,6 +46,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A486DA762CD8D28900BA6505 /* libraylib.a in Frameworks */,
+				A486DA732CD8D25400BA6505 /* Cocoa.framework in Frameworks */,
+				A486DA712CD8D24D00BA6505 /* IOKit.framework in Frameworks */,
+				A486DA6F2CD8D24500BA6505 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				A486DA652CD8CA6D00BA6505 /* ObjectiveTerriFried */,
+				A486DA6D2CD8D24500BA6505 /* Frameworks */,
 				A486DA642CD8CA6D00BA6505 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +71,17 @@
 				A486DA632CD8CA6D00BA6505 /* ObjectiveTerriFried */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A486DA6D2CD8D24500BA6505 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A486DA742CD8D26800BA6505 /* libraylib.a */,
+				A486DA722CD8D25400BA6505 /* Cocoa.framework */,
+				A486DA702CD8D24D00BA6505 /* IOKit.framework */,
+				A486DA6E2CD8D24500BA6505 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,6 +120,7 @@
 				TargetAttributes = {
 					A486DA622CD8CA6D00BA6505 = {
 						CreatedOnToolsVersion = 16.1;
+						LastSwiftMigration = 1610;
 					};
 				};
 			};
@@ -244,16 +272,25 @@
 		A486DA6B2CD8CA6D00BA6505 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				"HEADER_SEARCH_PATHS[arch=*]" = /Users/maximiliangabriel/Documents/GitHub/raylib/src;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = /Users/maximiliangabriel/Documents/GitHub/raylib/src;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
 		A486DA6C2CD8CA6D00BA6505 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				"HEADER_SEARCH_PATHS[arch=*]" = /Users/maximiliangabriel/Documents/GitHub/raylib/src;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = /Users/maximiliangabriel/Documents/GitHub/raylib/src;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
