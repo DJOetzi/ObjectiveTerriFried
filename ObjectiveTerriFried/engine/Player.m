@@ -1,13 +1,7 @@
-//
-//  Player.m
-//  ObjectiveTerriFried
-//
-//  Created by Maximilian Gabriel on 04.11.24.
-//
-
 #import <Foundation/Foundation.h>
 #import "Player.h"
-#import "utility/utility.h"
+#include "utility/include/utility.h"
+#import "utility/include/Constants.h"
 
 @implementation Player
 
@@ -39,23 +33,23 @@
     }
 
     // getters
-    - (double)  getX {
+    - (double) getX {
         return self.x;
     }
     
-    - (double)  getY {
+    - (double) getY {
         return self.y;
     }
     
-    - (int)     getWidth {
+    - (int) getWidth {
         return self.width;
     }
 
-    - (int)     getHeight {
+    - (int) getHeight {
         return self.height;
     }
 
-    - (bool)    getOnPlatform {
+    - (bool) getOnPlatform {
         return self.onPlatform;
     }
     
@@ -64,6 +58,49 @@
     }
 
     // setters
+    - (void) setX : (double)xinit {
+        self.x = xinit;
+    }
+    
+    - (void) setY : (double)yinit {
+        self.y = yinit;
+    }
 
+    - (void) setWidth : (int)widthinit {
+        self.width = widthinit;
+    }
+
+    - (void) setHeight : (int)heightinit {
+        self.height = heightinit;
+    }
+
+    - (void) setOnPlatform : (bool)onPlatforminit {
+        self.onPlatform = onPlatforminit;
+    }
+
+    - (void) setVelocity : (Vector2)velocityinit {
+        self.velocity = velocityinit;
+    }
     // misc
+
+    - (bool) isGrounded {
+        return [self getOnPlatform];
+    }
+
+    - (void) updatePosition {
+        self.x += self.velocity.x;
+        self.y += self.velocity.y;
+        
+        if (![self isGrounded])
+            self.velocity = buildVector2(self.velocity.x, self.velocity.y + [Constants GRAVITY]);
+        else
+            self.velocity = buildVector2(0, 0);
+        
+        if (self.x < 0)
+            self.velocity = buildVector2(-self.velocity.x, self.velocity.y);
+        
+        if (self.x + self.width > 800)
+            self.velocity = buildVector2(-self.velocity.x, self.velocity.y);
+    }
+
 @end
