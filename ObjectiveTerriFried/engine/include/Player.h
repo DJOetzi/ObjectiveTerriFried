@@ -1,3 +1,5 @@
+#pragma once
+
 #import <Foundation/Foundation.h>
 #include <raylib.h>
 
