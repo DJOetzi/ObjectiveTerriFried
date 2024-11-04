@@ -5,14 +5,14 @@
 #include <stdio.h>
 
 @interface Constants : NSObject
-    + (double)  PI;
+    + (double)  GET_PI;
     + (int)     GRAVITY;
     + (int)     SCREEN_WIDTH;
     + (int)     SCREEN_HEIGHT;
 @end
 
 @implementation Constants
-    + (double)  PI {
+    + (double)  GET_PI {
         return M_PI;
     }
     + (int)     GRAVITY {

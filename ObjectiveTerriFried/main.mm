@@ -1,13 +1,13 @@
 #import <Foundation/Foundation.h>
 #include <raylib.h>
 
-int main(int argc, const char * argv[]) {
+auto main(int argc, const char * argv[]) -> int {
     @autoreleasepool {
         const int screenWidth = 800;
         const int screenHeight = 450;
         
         
-        InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+        InitWindow(screenWidth, screenHeight, "TerriFried");
 
         SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------

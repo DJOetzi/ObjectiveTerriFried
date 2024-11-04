@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
-#import "Player.h"
-#include "utility/include/utility.h"
-#import "utility/include/Constants.h"
+#import "Player.hpp"
+#include "utility/include/utility.hpp"
+#import "utility/include/Constants.hpp"
 
 @implementation Player
 
