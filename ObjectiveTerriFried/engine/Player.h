@@ -18,9 +18,11 @@
     @property bool onPlatform;
     @property Vector2 velocity;
 
+    // constructors
     - (id) init;
     - (id) initWithParams : (double)xinit andYinit : (double)yinit andWidthinit : (int) widthinit andOnPlatforminit : (bool) onPlatforminit andVelocity : (Vector2) velocityinit;
 
+    // getters
     - (double)  getX;
     - (double)  getY;
     - (int)     getWidth;
@@ -28,10 +30,15 @@
     - (bool)    getOnPlatform;
     - (Vector2) getVelocity;
 
+    // setters
     - (void) setX          : (double)x;
     - (void) setY          : (double)y;
     - (void) setWidth      : (int)width;
     - (void) setHeight     : (int)height;
     - (void) setOnPlatform : (bool)onPlatform;
     - (void) setVelocity   : (Vector2)velocity;
+
+    // misc methods
+    - (bool) isGrounded;
+    - (void) updatePosition;
 @end
