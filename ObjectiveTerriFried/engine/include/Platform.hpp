@@ -12,7 +12,6 @@
     @property (nonatomic) Vector2 coinPos;
 
     // constructors
-    - (id) init;
     - (id) initWithIndex : (int)index;
     
     // getters

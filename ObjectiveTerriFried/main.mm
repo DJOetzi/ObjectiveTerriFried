@@ -2,11 +2,12 @@
 #include <raylib.h>
 
 auto main(int argc, const char * argv[]) -> int {
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+    
+    srand((unsigned)time(NULL));
+    
     @autoreleasepool {
-        const int screenWidth = 800;
-        const int screenHeight = 450;
-        
-        
         InitWindow(screenWidth, screenHeight, "TerriFried");
 
         SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
