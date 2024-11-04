@@ -81,8 +81,8 @@
     - (void) setVelocity : (Vector2)velocityinit {
         self.velocity = velocityinit;
     }
-    // misc
 
+    // misc methods
     - (bool) isGrounded {
         return [self getOnPlatform];
     }
