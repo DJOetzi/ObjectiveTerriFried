@@ -28,7 +28,7 @@
     - (void)    setWidth    : (int)widthinit;
     - (void)    setHeight   : (int)heightinit;
     - (void)    setHasCoin  : (bool)coininit;
-    - (void)    setCoinPos  : (Vector2)coinposinit;
+    - (void)    setCoinPos  : (Vector2)coinPosinit;
 
     // misc methods
     - (void)    updatePosition;
