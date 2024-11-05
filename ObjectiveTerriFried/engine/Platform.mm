@@ -21,4 +21,28 @@
         }
         return self;
     }
+    
+    - (double) getX {
+        return self.x;
+    }
+
+    - (double) getY {
+        return self.y;
+    }
+
+    - (int) getWidth {
+        return self.width;
+    }
+
+    - (int) getHeight {
+        return self.height;
+    }
+
+    - (bool) hasCoin {
+        return self.coinState;
+    }
+
+    - (Vector2) getCoinPos {
+        return self.coinPos;
+    }
 @end
