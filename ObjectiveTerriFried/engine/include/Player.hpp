@@ -15,7 +15,7 @@
 
     // constructors
     - (id) init;
-    - (id) initWithParams : (double)xinit andYinit : (double)yinit andWidthinit : (int) widthinit andHeightinit : (int) heightinit andOnPlatforminit : (bool) onPlatforminit andVelocity : (Vector2) velocityinit;
+    - (id) initWithParams : (double)xinit andYinit : (double)yinit andWidthinit : (int) widthinit andHeightinit : (int) heightinit;
 
     // getters
     - (double)  getX;

@@ -19,15 +19,15 @@
         return self;
     }
 
-    - (id) initWithParams : (double)xinit andYinit : (double)yinit andWidthinit : (int) widthinit andHeightinit : (int) heightinit andOnPlatforminit : (bool) onPlatforminit andVelocity : (Vector2) velocityinit {
+    - (id) initWithParams : (double)xinit andYinit : (double)yinit andWidthinit : (int) widthinit andHeightinit : (int) heightinit {
         if ( self = [super init] ) {
             self.x = xinit;
             self.y = yinit;
             
             self.width = widthinit;
             self.height = heightinit;
-            self.onPlatform = onPlatforminit;
-            self.velocity = velocityinit;
+            //self.onPlatform = onPlatforminit;
+            //self.velocity = velocityinit;
         }
         return self;
     }

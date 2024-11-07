@@ -10,7 +10,13 @@ Platform* platforms[4] = {
 };
 
 // to port: [platforms[0] getX] + [platforms[0] getWidth]/2 - 26/2, [platforms[0] getY] - [player getHeight], 26, 32
-Player* player [[Player alloc] initWithParams:<#(double)#> andYinit:<#(double)#> andWidthinit:<#(int)#> andHeightinit:<#(int)#> andOnPlatforminit:<#(bool)#> andVelocity:<#(Vector2)#>];
+Player* player [
+    [Player alloc]
+    initWithParams:<#(double)#>
+    andYinit:<#(double)#>
+    andWidthinit:<#(int)#>
+    andHeightinit:<#(int)#>
+];
 
 auto main(int argc, const char * argv[]) -> int {
     const int screenWidth = 800;
