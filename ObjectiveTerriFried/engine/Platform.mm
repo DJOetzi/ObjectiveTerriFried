@@ -6,16 +6,16 @@
     // constructors
     - (id) initWithIndex : (int)index {
         if ( self = [super init] ) {
-            self.width = 100;
-            self.height = 32;
+            _width = 100;
+            _height = 32;
             
-            self.x = rand() % 660 + 20;
-            self.y = 0 - self.height - (index * 100);
+            _x = rand() % 660 + 20;
+            _y = 0 - _height - (index * 100);
         
-            self.hasCoin = (((rand() % 4) == 0 || index == 0) ? false : true);
-            self.coinPos = buildVector2(
-                                        self.x + self.width/2 - 24/2,
-                                        self.y - 24 - 5
+            _coinState = (((rand() % 4) == 0 || index == 0) ? false : true);
+            _coinPos = buildVector2(
+                                        _x + _width/2 - 24/2,
+                                        _y - 24 - 5
                            );
         }
         return self;
@@ -23,64 +23,64 @@
     
     // getters
     - (double) getX {
-        return self.x;
+        return _x;
     }
 
     - (double) getY {
-        return self.y;
+        return _y;
     }
 
     - (int) getWidth {
-        return self.width;
+        return _width;
     }
 
     - (int) getHeight {
-        return self.height;
+        return _height;
     }
 
     - (bool) hasCoin {
-        return self.coinState;
+        return _coinState;
     }
 
     - (Vector2) getCoinPos {
-        return self.coinPos;
+        return _coinPos;
     }
 
     // setters
     - (void) setX : (double)xinit {
-        self.x = xinit;
+        _x = xinit;
     }
 
     - (void) setY : (double)yinit {
-        self.y = yinit;
+        _y = yinit;
     }
 
     - (void) setWidth:(int)widthinit {
-        self.width = widthinit;
+        _width = widthinit;
     }
 
     - (void) setHeight : (int)heightinit {
-        self.height = heightinit;
+        _height = heightinit;
     }
 
     - (void) setHasCoin : (bool)coininit {
-        self.coinState = coininit;
+        _coinState = coininit;
     }
 
     - (void) setCoinPos : (Vector2)coinPosinit {
-        self.coinPos = coinPosinit;
+        _coinPos = coinPosinit;
     }
 
     - (void) updatePosition {
-        self.y += 1;
+        _y += 1;
         
-        self.coinPos = buildVector2(self.x + self.width/2 - 24/2, self.y - 24 - 5);
+        _coinPos = buildVector2(_x + _width/2 - 24/2, _y - 24 - 5);
         
-        if (self.y > [Constants SCREEN_HEIGHT]) {
-            self.x = rand() % 660 + 20;
-            self.y = 0 - self.height;
+        if (_y > [Constants SCREEN_HEIGHT]) {
+            _x = rand() % 660 + 20;
+            _y = 0 - _height;
             
-            self.hasCoin = ((rand() % 4 == 0) ? false : true);
+            _coinState = ((rand() % 4 == 0) ? false : true);
         }
     }
 @end

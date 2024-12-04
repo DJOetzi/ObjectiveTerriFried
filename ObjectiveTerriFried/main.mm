@@ -30,13 +30,13 @@ auto main(int argc, const char* argv[]) -> int {
     Image egg = LoadImage("resources/egg.png");
     
     @autoreleasepool {
-        Platform* platforms[4] = {
+        std::vector<Platform*> platforms = {
             [[Platform alloc] initWithIndex:0],
             [[Platform alloc] initWithIndex:1],
             [[Platform alloc] initWithIndex:2],
             [[Platform alloc] initWithIndex:3]
         };
-
+        
         // to port: [platforms[0] getX] + [platforms[0] getWidth]/2 - 26/2, [platforms[0] getY] - [player getHeight], 26, 32
         Player* player = [
             [Player alloc]
@@ -71,11 +71,6 @@ auto main(int argc, const char* argv[]) -> int {
         // Main game loop
         while (!WindowShouldClose())    // Detect window close button or ESC key
         {
-            // Update
-            //----------------------------------------------------------------------------------
-            // TODO: Update your variables here
-            //----------------------------------------------------------------------------------
-
             // Draw
             //----------------------------------------------------------------------------------
             BeginDrawing();
@@ -87,12 +82,9 @@ auto main(int argc, const char* argv[]) -> int {
             EndDrawing();
             //----------------------------------------------------------------------------------
         }
-
+        
         // De-Initialization
         //--------------------------------------------------------------------------------------
-        CloseWindow();        // Close window and OpenGL context
-        //--------------------------------------------------------------------------------------
-        
         UnloadTexture(playerSprite);
         UnloadTexture(lavaSprite);
         UnloadTexture(platformSprite);
@@ -107,8 +99,10 @@ auto main(int argc, const char* argv[]) -> int {
         UnloadSound(fxSplash);
         UnloadSound(fxSelect);
         UnloadFont(font);
-        CloseAudioDevice();
-        CloseWindow();
+        
+        CloseAudioDevice(); // Close Miniaudio Context
+        CloseWindow();        // Close window and OpenGL context
+        //--------------------------------------------------------------------------------------
     }
     
     return 0;

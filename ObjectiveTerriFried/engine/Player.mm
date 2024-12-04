@@ -7,78 +7,78 @@
     // constructors
     - (id) init {
         if ( self = [super init] ) {
-            self.x = 0;
-            self.y = 0;
+            _x = 0;
+            _y = 0;
             
-            self.width = 0;
-            self.height = 0;
-            self.onPlatform = 0;
-            self.velocity = buildVector2(0, 0);
+            _width = 0;
+            _height = 0;
+            _onPlatform = 0;
+            _velocity = buildVector2(0, 0);
         }
         return self;
     }
 
     - (id) initWithParams : (double)xinit andYinit : (double)yinit andWidthinit : (int) widthinit andHeightinit : (int) heightinit {
         if ( self = [super init] ) {
-            self.x = xinit;
-            self.y = yinit;
+            _x = xinit;
+            _y = yinit;
             
-            self.width = widthinit;
-            self.height = heightinit;
-            //self.onPlatform = onPlatforminit;
-            //self.velocity = velocityinit;
+            _width = widthinit;
+            _height = heightinit;
+            //_onPlatform = onPlatforminit;
+            //_velocity = velocityinit;
         }
         return self;
     }
 
     // getters
     - (double) getX {
-        return self.x;
+        return _x;
     }
     
     - (double) getY {
-        return self.y;
+        return _y;
     }
     
     - (int) getWidth {
-        return self.width;
+        return _width;
     }
 
     - (int) getHeight {
-        return self.height;
+        return _height;
     }
 
     - (bool) getOnPlatform {
-        return self.onPlatform;
+        return _onPlatform;
     }
     
     - (Vector2) getVelocity {
-        return self.velocity;
+        return _velocity;
     }
 
     // setters
     - (void) setX : (double)xinit {
-        self.x = xinit;
+        _x = xinit;
     }
     
     - (void) setY : (double)yinit {
-        self.y = yinit;
+        _y = yinit;
     }
 
     - (void) setWidth : (int)widthinit {
-        self.width = widthinit;
+        _width = widthinit;
     }
 
     - (void) setHeight : (int)heightinit {
-        self.height = heightinit;
+        _height = heightinit;
     }
 
     - (void) setOnPlatform : (bool)onPlatforminit {
-        self.onPlatform = onPlatforminit;
+        _onPlatform = onPlatforminit;
     }
 
     - (void) setVelocity : (Vector2)velocityinit {
-        self.velocity = velocityinit;
+        _velocity = velocityinit;
     }
 
     // misc methods
@@ -87,19 +87,19 @@
     }
 
     - (void) updatePosition {
-        self.x += self.velocity.x;
-        self.y += self.velocity.y;
+        _x += _velocity.x;
+        _y += _velocity.y;
         
         if (![self isGrounded])
-            self.velocity = buildVector2(self.velocity.x, self.velocity.y + [Constants GRAVITY]);
+            _velocity = buildVector2(_velocity.x, _velocity.y + [Constants GRAVITY]);
         else
-            self.velocity = buildVector2(0, 0);
+            _velocity = buildVector2(0, 0);
         
-        if (self.x < 0)
-            self.velocity = buildVector2(-self.velocity.x, self.velocity.y);
+        if (_x < 0)
+            _velocity = buildVector2(-_velocity.x, _velocity.y);
         
-        if (self.x + self.width > 800)
-            self.velocity = buildVector2(-self.velocity.x, self.velocity.y);
+        if (_x + _width > 800)
+            _velocity = buildVector2(-_velocity.x, _velocity.y);
     }
 
     - (void) checkPlayerCollision : (Platform**) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX {
