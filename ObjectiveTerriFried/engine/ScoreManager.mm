@@ -1,3 +1,7 @@
+#include <cstdio>
+#include <raylib.h>
+#include <cstdlib>
+
 #import "include/ScoreManager.hpp"
 
 @implementation ScoreManager : NSObject
@@ -42,6 +46,32 @@
     }
 
     // functionality
-    - (void) addScore        : (int)amount;
+    - (void) addScore        : (int)amount {
+        self.scoreInt += amount;
+        
+        std::string numcache = std::to_string(self.scoreInt);
+        
+        if (self.scoreInt < 10) {
+            self.score = "00" + numcache;
+        }
+        else if (self.scoreInt) {
+            self.score = "0" + numcache;
+        }
+        else {
+            self.score = numcache;
+        }
+        
+        if (self.scoreInt > self.highscoreInt) {
+            self.highscoreInt = self.scoreInt;
+            
+            self.highscore = "BEST: " + std::to_string(self.highscoreInt);
+        }
+    }
+
+    - (void) resetScore {
+        self.scoreInt = 0;
+        self.score = "00" + std::to_string(self.scoreInt);
+        SaveStorageValue(0, self.highscoreInt);
+    }
 @end
 

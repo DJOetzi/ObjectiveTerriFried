@@ -28,4 +28,5 @@
 
     // functionality
     - (void) addScore        : (int)amount;
+    - (void) resetScore;
 @end
