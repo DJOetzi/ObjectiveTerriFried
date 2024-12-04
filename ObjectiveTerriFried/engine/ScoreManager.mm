@@ -1,5 +1,4 @@
 #include <cstdio>
-#include <raylib.h>
 #include <cstdlib>
 
 #import "include/ScoreManager.hpp"

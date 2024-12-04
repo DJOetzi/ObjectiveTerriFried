@@ -1,9 +1,4 @@
-//
-//  SaveManager.hpp
-//  ObjectiveTerriFried
-//
-//  Created by Maximilian Gabriel on 29.11.24.
-//
+#pragma once
 
 #import <Foundation/Foundation.h>
 #include <iostream>
