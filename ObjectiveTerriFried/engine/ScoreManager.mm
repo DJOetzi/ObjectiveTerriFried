@@ -3,6 +3,7 @@
 #include <cstdlib>
 
 #import "include/ScoreManager.hpp"
+#import "utility/include/SaveManager.hpp"
 
 @implementation ScoreManager : NSObject
     // constructors
@@ -71,7 +72,7 @@
     - (void) resetScore {
         self.scoreInt = 0;
         self.score = "00" + std::to_string(self.scoreInt);
-        SaveStorageValue(0, self.highscoreInt);
+        [SaveManager saveStorageValue:0 andValue:self.highscoreInt];
     }
 @end
 

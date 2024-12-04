@@ -103,4 +103,32 @@
             self.velocity = buildVector2(-self.velocity.x, self.velocity.y);
     }
 
+    - (void) checkPlayerCollision : (Platform**) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX {
+        bool onPlatform = false;
+        
+        for(int i=0; i<4; i++) {
+            if ([platforms[i] hasCoin] && [self getX] + [self getWidth] - 3 > [platforms[i] getCoinPos].x && [self getX] + 3 < [platforms[i] getCoinPos].x + 24 && [self getY] + [self getHeight] - 3 > [platforms[i] getCoinPos].y && [self getY] + 3 < [platforms[i] getCoinPos].y + 24)
+            {
+                [scoreMan addScore : 1];
+                [platforms[i] setHasCoin : false];
+                playCoinFX = true;
+            }
+            
+            if ([self getX] + 1 < [platforms[i] getX] + [platforms[i] getWidth] && [self getX] + [self getWidth] > [platforms[i] getX] && [self getY] + [self getHeight] >= [platforms[i] getY] && [self getY] < [platforms[i] getY] + [platforms[i] getHeight])
+            {
+                if ([self getY] > [platforms[i] getY] + [platforms[i] getHeight]/2.0)
+                {
+                    [self setVelocity : buildVector2([self getVelocity].x, 5)];
+                }
+                else if ([self getY] + [self getHeight] <  [platforms[i] getY] + [platforms[i] getHeight])
+                {
+                    onPlatform = true;
+                    [self setHeight:[platforms[i] getY] - [self getHeight]];
+                    [self setY:[self getY] + 1];
+                }
+            }
+        }
+        
+        [self setOnPlatform : onPlatform];
+    }
 @end

@@ -3,10 +3,12 @@
 
 #import "engine/include/Platform.hpp"
 #import "engine/include/Player.hpp"
+#import "engine/include/ScoreManager.hpp"
 #import "engine/utility/include/Constants.hpp"
+#import "engine/utility/include/SaveManager.hpp"
 
 
-auto main(int argc, const char * argv[]) -> int {
+auto main(int argc, const char* argv[]) -> int {
     srand((unsigned)time(NULL));
     
     @autoreleasepool {
@@ -25,6 +27,9 @@ auto main(int argc, const char * argv[]) -> int {
             andWidthinit:   26
             andHeightinit:  32
         ];
+        
+        ScoreManager* scoreMan = [[ScoreManager alloc] init];
+        [scoreMan setHighscoreInt: [SaveManager loadStorageValue:0]];
         
         InitWindow([Constants SCREEN_WIDTH], [Constants SCREEN_HEIGHT], "TerriFried");
 

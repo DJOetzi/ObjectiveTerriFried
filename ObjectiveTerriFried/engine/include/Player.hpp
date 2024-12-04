@@ -1,6 +1,9 @@
 #pragma once
 
 #import <Foundation/Foundation.h>
+#import "Platform.hpp"
+#import "ScoreManager.hpp"
+
 #include <raylib.h>
 
 @interface Player : NSObject
@@ -26,14 +29,15 @@
     - (Vector2) getVelocity;
 
     // setters
-    - (void) setX          : (double)   xinit;
-    - (void) setY          : (double)   yinit;
-    - (void) setWidth      : (int)      widthinit;
-    - (void) setHeight     : (int)      heightinit;
-    - (void) setOnPlatform : (bool)     onPlatforminit;
-    - (void) setVelocity   : (Vector2)  velocityinit;
+    - (void) setX                   : (double)   xinit;
+    - (void) setY                   : (double)   yinit;
+    - (void) setWidth               : (int)      widthinit;
+    - (void) setHeight              : (int)      heightinit;
+    - (void) setOnPlatform          : (bool)     onPlatforminit;
+    - (void) setVelocity            : (Vector2)  velocityinit;
 
     // misc methods
     - (bool) isGrounded;
     - (void) updatePosition;
+    - (void) checkPlayerCollision   : (Platform**) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX;
 @end
