@@ -39,7 +39,7 @@
 			buildPhase = A486DA5F2CD8CA6D00BA6505 /* Sources */;
 			membershipExceptions = (
 				engine/utility/include/Constants.hpp,
-				engine/utility/include/utility.hpp,
+				engine/utility/include/Utility.hpp,
 			);
 		};
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
@@ -51,7 +51,7 @@
 				A436C24B2CD8E0A80065EF79 /* Exceptions for "ObjectiveTerriFried" folder in "Compile Sources" phase from "ObjectiveTerriFried" target */,
 			);
 			explicitFileTypes = {
-				engine/utility/include/utility.hpp = sourcecode.cpp.h;
+				engine/utility/include/Utility.hpp = sourcecode.cpp.h;
 			};
 			path = ObjectiveTerriFried;
 			sourceTree = "<group>";

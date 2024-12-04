@@ -1,7 +1,5 @@
-#import <Foundation/Foundation.h>
 #import "include/Platform.hpp"
-
-#include "utility/include/utility.hpp"
+#include "utility/include/Utility.hpp"
 #include "utility/include/Constants.hpp"
 
 @implementation Platform

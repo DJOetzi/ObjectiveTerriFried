@@ -1,10 +1,3 @@
-//
-//  SaveManager.mm
-//  ObjectiveTerriFried
-//
-//  Created by Maximilian Gabriel on 29.11.24.
-//
-
 #ifndef TRACELOG
         #define TRACELOG(level, ...)    printf(__VA_ARGS__)
 #endif
