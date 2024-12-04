@@ -9,7 +9,12 @@
 
 
 auto main(int argc, const char* argv[]) -> int {
+    TraceLog(LOG_DEBUG, GetWorkingDirectory());
     srand((unsigned)time(NULL));
+    
+    
+    InitWindow([Constants SCREEN_WIDTH], [Constants SCREEN_HEIGHT], "TerriFried");
+    InitAudioDevice();
     
     Texture2D playerSprite = LoadTexture("resources/egg.png");
     Texture2D lavaSprite = LoadTexture("resources/lava.png");
@@ -25,6 +30,7 @@ auto main(int argc, const char* argv[]) -> int {
     Sound fxCoin = LoadSound("resources/coin.wav");
     Sound fxSplash = LoadSound("resources/splash.wav");
     Sound fxSelect = LoadSound("resources/select.wav");
+    
     Font font = LoadFontEx("resources/font.otf", 64, 0, NULL);
     
     Image egg = LoadImage("resources/egg.png");
@@ -59,9 +65,7 @@ auto main(int argc, const char* argv[]) -> int {
         bool playedSplash = false;
         bool playedSelect = false;
         
-        InitWindow([Constants SCREEN_WIDTH], [Constants SCREEN_HEIGHT], "TerriFried");
         SetWindowIcon(egg);
-        InitAudioDevice();
         SetMasterVolume(0.3f);
 
         SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
