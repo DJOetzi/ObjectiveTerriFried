@@ -9,7 +9,7 @@
     @property (nonatomic) Texture2D rawTex;
 
     // Constructors
-    - (id) initWithPath : (std::string)path;
+    - (id) initWithPath : (std::string) path;
 
     // Destructor
     - (void) dealloc;
