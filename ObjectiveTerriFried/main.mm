@@ -7,6 +7,7 @@
 #import "engine/utility/include/Constants.hpp"
 #import "engine/utility/include/SaveManager.hpp"
 #import "engine/wrappers/include/NSTexture2D.hpp"
+#import "engine/wrappers/include/NSSound.hpp"
 
 
 auto main(int argc, const char* argv[]) -> int {
@@ -16,26 +17,27 @@ auto main(int argc, const char* argv[]) -> int {
     
     InitWindow([Constants SCREEN_WIDTH], [Constants SCREEN_HEIGHT], "TerriFried");
     InitAudioDevice();
-    
-    Sound fxLaunch = LoadSound("resources/launch.wav");
-    Sound fxClick = LoadSound("resources/click.wav");
-    Sound fxDeath = LoadSound("resources/die.wav");
-    Sound fxCoin = LoadSound("resources/coin.wav");
-    Sound fxSplash = LoadSound("resources/splash.wav");
-    Sound fxSelect = LoadSound("resources/select.wav");
+
     
     Font font = LoadFontEx("resources/font.otf", 64, 0, NULL);
     
     Image egg = LoadImage("resources/egg.png");
     
     @autoreleasepool {
-        NSTexture2D* playerSprite =     [[NSTexture2D alloc] initWithPath:"resources/egg.png"];
-        NSTexture2D* lavaSprite =       [[NSTexture2D alloc] initWithPath:"resources/lava.png"];
-        NSTexture2D* platformSprite =   [[NSTexture2D alloc] initWithPath:"resources/platform.png"];
-        NSTexture2D* coinSprite =       [[NSTexture2D alloc] initWithPath:"resources/coin.png"];
-        NSTexture2D* scoreBoxSprite =   [[NSTexture2D alloc] initWithPath:"resources/scorebox.png"];
-        NSTexture2D* logo =             [[NSTexture2D alloc] initWithPath:"resources/logo.png"];
-        NSTexture2D* splashEggSprite =  [[NSTexture2D alloc] initWithPath:"resources/splash_egg.png"];
+        id<NSEngineResource> playerSprite =     [[NSTexture2D alloc] initWithPath:"resources/egg.png"];
+        id<NSEngineResource> lavaSprite =       [[NSTexture2D alloc] initWithPath:"resources/lava.png"];
+        id<NSEngineResource> platformSprite =   [[NSTexture2D alloc] initWithPath:"resources/platform.png"];
+        id<NSEngineResource> coinSprite =       [[NSTexture2D alloc] initWithPath:"resources/coin.png"];
+        id<NSEngineResource> scoreBoxSprite =   [[NSTexture2D alloc] initWithPath:"resources/scorebox.png"];
+        id<NSEngineResource> logo =             [[NSTexture2D alloc] initWithPath:"resources/logo.png"];
+        id<NSEngineResource> splashEggSprite =  [[NSTexture2D alloc] initWithPath:"resources/splash_egg.png"];
+        
+        id<NSEngineResource> fxLaunch =         [[NSSound alloc] initWithPath:"resources/launch.wav"];
+        id<NSEngineResource> fxClick =          [[NSSound alloc] initWithPath:"resources/click.wav"];
+        id<NSEngineResource> fxDeath =          [[NSSound alloc] initWithPath:"resources/die.wav"];
+        id<NSEngineResource> fxCoin =           [[NSSound alloc] initWithPath:"resources/coin.wav"];
+        id<NSEngineResource> fxSplash =         [[NSSound alloc] initWithPath:"resources/splash.wav"];
+        id<NSEngineResource> fxSelect =         [[NSSound alloc] initWithPath:"resources/select.wav"];
         
         std::vector<Platform*> platforms = {
             [[Platform alloc] initWithIndex:0],
