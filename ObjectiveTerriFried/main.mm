@@ -14,6 +14,8 @@
 #import "engine/wrappers/include/NSEngineFont.hpp"
 #import "engine/wrappers/include/NSEngineImage.hpp"
 
+bool titleScreen = true, playCoinFX = false;
+
 auto resetGame(ScoreManager*, std::vector<Platform*>&, Player*) -> void;
 
 auto main(int argc, const char* argv[]) -> int {
@@ -85,13 +87,49 @@ auto main(int argc, const char* argv[]) -> int {
         {
             // Draw
             //----------------------------------------------------------------------------------
-            BeginDrawing();
-            {
-                ClearBackground(RAYWHITE);
-
-                DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+            if(titleScreen) {
+                if(splashTimer > 120) {
+                    if(!playedSelect) {
+                        PlaySound(*(Sound*)[fxSelect getResource]);
+                        playedSelect = true;
+                    }
+                    
+                    BeginDrawing();
+                    {
+                        ClearBackground(ColorFromNormalized(buildRGBA(.933, .894, .882, 1.0)));
+                        
+                        DrawTexture(*(Texture2D*)[logo getResource], [Constants SCREEN_WIDTH]/2.0, [Constants SCREEN_HEIGHT]/2.0 - 45.0 - 30, WHITE);
+                        DrawTextEx(*(Font*)[font getResource], [scoreMan getHighscoreText].c_str(), buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, BLACK);
+                        DrawTextEx(*(Font*)[font getResource], "CLICK ANYWHERE TO BEGIN", buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, BLACK);
+                    }
+                    EndDrawing();
+                    
+                    if(IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+                        PlaySound(*(Sound*)[fxSelect getResource]);
+                        titleScreen = false;
+                        mouseDownX = GetMouseX();
+                        mouseDownY = GetMouseY();
+                    }
+                }
+                else {
+                    if(!playedSplash) {
+                        PlaySound(*(Sound*)[fxSplash getResource]);
+                        playedSplash = true;
+                    }
+                    
+                    BeginDrawing();
+                    {
+                        ClearBackground(ColorFromNormalized(buildRGBA(.933, .894, .882, 1.0)));
+                        DrawTextEx(*(Font*)[font getResource], "POLYMARS", buildVector2([Constants SCREEN_WIDTH]/2.0 - 54.0, [Constants SCREEN_HEIGHT]/2.0 + 3.0), 32, 0, ColorFromNormalized(buildRGBA(.835, .502, .353, 1.0)));
+                        DrawTexture(*(Texture2D*)[splashEggSprite getResource], [Constants SCREEN_WIDTH]/2.0 - 16.0, [Constants SCREEN_HEIGHT]/2.0 - 16.0 - 23.0, WHITE);
+                    }
+                    EndDrawing();
+                    ++splashTimer;
+                }
             }
-            EndDrawing();
+            else {
+                
+            }
             //----------------------------------------------------------------------------------
         }
         
