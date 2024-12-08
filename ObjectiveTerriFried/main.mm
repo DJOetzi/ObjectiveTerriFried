@@ -4,10 +4,13 @@
 #import "engine/include/Platform.hpp"
 #import "engine/include/Player.hpp"
 #import "engine/include/ScoreManager.hpp"
+
 #import "engine/utility/include/Constants.hpp"
 #import "engine/utility/include/SaveManager.hpp"
+
 #import "engine/wrappers/include/NSTexture2D.hpp"
 #import "engine/wrappers/include/NSSound.hpp"
+#import "engine/wrappers/include/NSFont.hpp"
 
 
 auto main(int argc, const char* argv[]) -> int {
@@ -17,9 +20,6 @@ auto main(int argc, const char* argv[]) -> int {
     
     InitWindow([Constants SCREEN_WIDTH], [Constants SCREEN_HEIGHT], "TerriFried");
     InitAudioDevice();
-
-    
-    Font font = LoadFontEx("resources/font.otf", 64, 0, NULL);
     
     Image egg = LoadImage("resources/egg.png");
     
@@ -38,6 +38,8 @@ auto main(int argc, const char* argv[]) -> int {
         id<NSEngineResource> fxCoin =           [[NSSound alloc] initWithPath:"resources/coin.wav"];
         id<NSEngineResource> fxSplash =         [[NSSound alloc] initWithPath:"resources/splash.wav"];
         id<NSEngineResource> fxSelect =         [[NSSound alloc] initWithPath:"resources/select.wav"];
+        
+        id<NSEngineResource> font =             [[NSFont alloc] initWithPathEx:"resources/font.otf" andFontSize:64 andCodePoints:{}];
         
         std::vector<Platform*> platforms = {
             [[Platform alloc] initWithIndex:0],

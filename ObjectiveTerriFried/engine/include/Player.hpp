@@ -18,7 +18,7 @@
 
     // constructors
     - (id) init;
-    - (id) initWithParams : (double)xinit andYinit : (double)yinit andWidthinit : (int) widthinit andHeightinit : (int) heightinit;
+    - (id) initWithParams : (double)xinit andYinit : (double) yinit andWidthinit : (int) widthinit andHeightinit : (int) heightinit;
 
     // getters
     - (double)  getX;
