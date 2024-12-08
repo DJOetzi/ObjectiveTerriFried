@@ -11,6 +11,7 @@
 #import "engine/wrappers/include/NSTexture2D.hpp"
 #import "engine/wrappers/include/NSSound.hpp"
 #import "engine/wrappers/include/NSFont.hpp"
+#import "engine/wrappers/include/NSImage.hpp"
 
 
 auto main(int argc, const char* argv[]) -> int {
@@ -20,9 +21,7 @@ auto main(int argc, const char* argv[]) -> int {
     
     InitWindow([Constants SCREEN_WIDTH], [Constants SCREEN_HEIGHT], "TerriFried");
     InitAudioDevice();
-    
-    Image egg = LoadImage("resources/egg.png");
-    
+
     @autoreleasepool {
         id<NSEngineResource> playerSprite =     [[NSTexture2D alloc] initWithPath:"resources/egg.png"];
         id<NSEngineResource> lavaSprite =       [[NSTexture2D alloc] initWithPath:"resources/lava.png"];
@@ -40,6 +39,8 @@ auto main(int argc, const char* argv[]) -> int {
         id<NSEngineResource> fxSelect =         [[NSSound alloc] initWithPath:"resources/select.wav"];
         
         id<NSEngineResource> font =             [[NSFont alloc] initWithPathEx:"resources/font.otf" andFontSize:64 andCodePoints:{}];
+        
+        id<NSEngineResource> egg =            [[NSImage alloc] initWithPath:"resources/egg.png"];
         
         std::vector<Platform*> platforms = {
             [[Platform alloc] initWithIndex:0],
@@ -70,7 +71,7 @@ auto main(int argc, const char* argv[]) -> int {
         bool playedSplash = false;
         bool playedSelect = false;
         
-        SetWindowIcon(egg);
+        SetWindowIcon(*(Image*)[egg getResource]);
         SetMasterVolume(0.3f);
 
         SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
@@ -92,18 +93,9 @@ auto main(int argc, const char* argv[]) -> int {
             //----------------------------------------------------------------------------------
         }
         
-        // De-Initialization
-        //--------------------------------------------------------------------------------------
-        UnloadSound(fxClick);
-        UnloadSound(fxLaunch);
-        UnloadSound(fxDeath);
-        UnloadSound(fxCoin);
-        UnloadSound(fxSplash);
-        UnloadSound(fxSelect);
-        UnloadFont(font);
         
-        CloseAudioDevice(); // Close Miniaudio Context
-        CloseWindow();        // Close window and OpenGL context
+        CloseAudioDevice();     // Close Miniaudio Context
+        CloseWindow();          // Close window and OpenGL context
         //--------------------------------------------------------------------------------------
     }
     
