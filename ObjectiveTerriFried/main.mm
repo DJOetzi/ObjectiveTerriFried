@@ -128,7 +128,29 @@ auto main(int argc, const char* argv[]) -> int {
                 }
             }
             else {
+                if(playCoinFX) {
+                    PlaySound(*(Sound*)[fxCoin getResource]);
+                    playCoinFX = false;
+                }
                 
+                if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && [player isGrounded]) {
+                    PlaySound(*(Sound*)[fxClick getResource]);
+                    mouseDownX = GetMouseX();
+                    mouseDownY = GetMouseY();
+                }
+                
+                if(IsMouseButtonReleased(MOUSE_LEFT_BUTTON) && [player isGrounded]) {
+                    if(firstTime)
+                        firstTime = false;
+                    else {
+                        PlaySound(*(Sound*)[fxLaunch getResource]);
+                        
+                        if([player onPlatform])
+                            [player setY:[player getY]-1.0];
+                        
+                        [player setVelocity:buildVector2((GetMouseX() - mouseDownX)*.08, (GetMouseY() - mouseDownY)*.08)];
+                    }
+                }
             }
             //----------------------------------------------------------------------------------
         }
