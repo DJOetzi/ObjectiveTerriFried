@@ -14,7 +14,7 @@
         UnloadTexture(_rawTex);
     }
 
-    - (Texture2D&) getTexture {
-        return _rawTex;
+    - (void* const) getResource {
+        return &_rawTex;
     }
 @end

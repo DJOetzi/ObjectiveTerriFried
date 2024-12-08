@@ -6,23 +6,16 @@
 #import "engine/include/ScoreManager.hpp"
 #import "engine/utility/include/Constants.hpp"
 #import "engine/utility/include/SaveManager.hpp"
+#import "engine/wrappers/include/NSTexture2D.hpp"
 
 
 auto main(int argc, const char* argv[]) -> int {
-    TraceLog(LOG_DEBUG, GetWorkingDirectory());
+    TraceLog(LOG_DEBUG, ("Current Assets Directory: " + std::string(GetWorkingDirectory()) + "/resources").c_str());
     srand((unsigned)time(NULL));
     
     
     InitWindow([Constants SCREEN_WIDTH], [Constants SCREEN_HEIGHT], "TerriFried");
     InitAudioDevice();
-    
-    Texture2D playerSprite = LoadTexture("resources/egg.png");
-    Texture2D lavaSprite = LoadTexture("resources/lava.png");
-    Texture2D platformSprite = LoadTexture("resources/platform.png");
-    Texture2D coinSprite = LoadTexture("resources/coin.png");
-    Texture2D scoreBoxSprite = LoadTexture("resources/scorebox.png");
-    Texture2D logo = LoadTexture("resources/logo.png");
-    Texture2D splashEggSprite = LoadTexture("resources/splash_egg.png");
     
     Sound fxLaunch = LoadSound("resources/launch.wav");
     Sound fxClick = LoadSound("resources/click.wav");
@@ -36,6 +29,14 @@ auto main(int argc, const char* argv[]) -> int {
     Image egg = LoadImage("resources/egg.png");
     
     @autoreleasepool {
+        NSTexture2D* playerSprite =     [[NSTexture2D alloc] initWithPath:"resources/egg.png"];
+        NSTexture2D* lavaSprite =       [[NSTexture2D alloc] initWithPath:"resources/lava.png"];
+        NSTexture2D* platformSprite =   [[NSTexture2D alloc] initWithPath:"resources/platform.png"];
+        NSTexture2D* coinSprite =       [[NSTexture2D alloc] initWithPath:"resources/coin.png"];
+        NSTexture2D* scoreBoxSprite =   [[NSTexture2D alloc] initWithPath:"resources/scorebox.png"];
+        NSTexture2D* logo =             [[NSTexture2D alloc] initWithPath:"resources/logo.png"];
+        NSTexture2D* splashEggSprite =  [[NSTexture2D alloc] initWithPath:"resources/splash_egg.png"];
+        
         std::vector<Platform*> platforms = {
             [[Platform alloc] initWithIndex:0],
             [[Platform alloc] initWithIndex:1],
@@ -89,13 +90,6 @@ auto main(int argc, const char* argv[]) -> int {
         
         // De-Initialization
         //--------------------------------------------------------------------------------------
-        UnloadTexture(playerSprite);
-        UnloadTexture(lavaSprite);
-        UnloadTexture(platformSprite);
-        UnloadTexture(coinSprite);
-        UnloadTexture(scoreBoxSprite);
-        UnloadTexture(logo);
-        UnloadTexture(splashEggSprite);
         UnloadSound(fxClick);
         UnloadSound(fxLaunch);
         UnloadSound(fxDeath);

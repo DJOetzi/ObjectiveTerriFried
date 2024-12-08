@@ -1,14 +1,9 @@
 #pragma once
 
 #import <Foundation/Foundation.h>
-#import "../Protocols/NSEngineResource.hpp"
-
 #include <iostream>
-#include <raylib.h>
 
-@interface NSTexture2D : NSObject <NSEngineResource>
-    @property (nonatomic) Texture2D rawTex;
-
+@protocol NSEngineResource
     // Constructors
     - (id) initWithPath : (std::string) path;
 
