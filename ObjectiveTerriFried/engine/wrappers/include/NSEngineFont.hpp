@@ -6,7 +6,7 @@
 #include <iostream>
 #include <raylib.h>
 
-@interface NSFont : NSObject<NSEngineResource>
+@interface NSEngineFont : NSObject<NSEngineResource>
     @property (nonatomic) Font rawFont;
 
     // Constructors

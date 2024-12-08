@@ -1,8 +1,8 @@
-#import "include/NSImage.hpp"
+#import "include/NSEngineImage.hpp"
 
 #include <raylib.h>
 
-@implementation NSImage : NSObject
+@implementation NSEngineImage : NSObject
     - (id) initWithPath : (std::string) path {
         if ( self = [super init] ) {
             _rawImg = LoadImage(path.c_str());

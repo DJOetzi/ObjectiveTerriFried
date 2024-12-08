@@ -1,8 +1,8 @@
-#import "include/NSFont.hpp"
+#import "include/NSEngineFont.hpp"
 
 #include <raylib.h>
 
-@implementation NSFont : NSObject
+@implementation NSEngineFont : NSObject
     // Constructors
     - (id) initWithPath : (std::string) path {
         if ( self = [super init] ) {

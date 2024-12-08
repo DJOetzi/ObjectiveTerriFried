@@ -1,8 +1,8 @@
-#import "include/NSSound.hpp"
+#import "include/NSEngineSound.hpp"
 
 #include <raylib.h>
 
-@implementation NSSound : NSObject
+@implementation NSEngineSound : NSObject
     // Constructors
     - (id) initWithPath : (std::string) path {
         if ( self = [super init] ) {

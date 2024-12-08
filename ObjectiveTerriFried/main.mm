@@ -8,10 +8,10 @@
 #import "engine/utility/include/Constants.hpp"
 #import "engine/utility/include/SaveManager.hpp"
 
-#import "engine/wrappers/include/NSTexture2D.hpp"
-#import "engine/wrappers/include/NSSound.hpp"
-#import "engine/wrappers/include/NSFont.hpp"
-#import "engine/wrappers/include/NSImage.hpp"
+#import "engine/wrappers/include/NSEngineTexture2D.hpp"
+#import "engine/wrappers/include/NSEngineSound.hpp"
+#import "engine/wrappers/include/NSEngineFont.hpp"
+#import "engine/wrappers/include/NSEngineImage.hpp"
 
 
 auto main(int argc, const char* argv[]) -> int {
@@ -23,24 +23,24 @@ auto main(int argc, const char* argv[]) -> int {
     InitAudioDevice();
 
     @autoreleasepool {
-        id<NSEngineResource> playerSprite =     [[NSTexture2D alloc] initWithPath:"resources/egg.png"];
-        id<NSEngineResource> lavaSprite =       [[NSTexture2D alloc] initWithPath:"resources/lava.png"];
-        id<NSEngineResource> platformSprite =   [[NSTexture2D alloc] initWithPath:"resources/platform.png"];
-        id<NSEngineResource> coinSprite =       [[NSTexture2D alloc] initWithPath:"resources/coin.png"];
-        id<NSEngineResource> scoreBoxSprite =   [[NSTexture2D alloc] initWithPath:"resources/scorebox.png"];
-        id<NSEngineResource> logo =             [[NSTexture2D alloc] initWithPath:"resources/logo.png"];
-        id<NSEngineResource> splashEggSprite =  [[NSTexture2D alloc] initWithPath:"resources/splash_egg.png"];
+        id<NSEngineResource> playerSprite =     [[NSEngineTexture2D alloc] initWithPath:"resources/egg.png"];
+        id<NSEngineResource> lavaSprite =       [[NSEngineTexture2D alloc] initWithPath:"resources/lava.png"];
+        id<NSEngineResource> platformSprite =   [[NSEngineTexture2D alloc] initWithPath:"resources/platform.png"];
+        id<NSEngineResource> coinSprite =       [[NSEngineTexture2D alloc] initWithPath:"resources/coin.png"];
+        id<NSEngineResource> scoreBoxSprite =   [[NSEngineTexture2D alloc] initWithPath:"resources/scorebox.png"];
+        id<NSEngineResource> logo =             [[NSEngineTexture2D alloc] initWithPath:"resources/logo.png"];
+        id<NSEngineResource> splashEggSprite =  [[NSEngineTexture2D alloc] initWithPath:"resources/splash_egg.png"];
         
-        id<NSEngineResource> fxLaunch =         [[NSSound alloc] initWithPath:"resources/launch.wav"];
-        id<NSEngineResource> fxClick =          [[NSSound alloc] initWithPath:"resources/click.wav"];
-        id<NSEngineResource> fxDeath =          [[NSSound alloc] initWithPath:"resources/die.wav"];
-        id<NSEngineResource> fxCoin =           [[NSSound alloc] initWithPath:"resources/coin.wav"];
-        id<NSEngineResource> fxSplash =         [[NSSound alloc] initWithPath:"resources/splash.wav"];
-        id<NSEngineResource> fxSelect =         [[NSSound alloc] initWithPath:"resources/select.wav"];
+        id<NSEngineResource> fxLaunch =         [[NSEngineSound alloc] initWithPath:"resources/launch.wav"];
+        id<NSEngineResource> fxClick =          [[NSEngineSound alloc] initWithPath:"resources/click.wav"];
+        id<NSEngineResource> fxDeath =          [[NSEngineSound alloc] initWithPath:"resources/die.wav"];
+        id<NSEngineResource> fxCoin =           [[NSEngineSound alloc] initWithPath:"resources/coin.wav"];
+        id<NSEngineResource> fxSplash =         [[NSEngineSound alloc] initWithPath:"resources/splash.wav"];
+        id<NSEngineResource> fxSelect =         [[NSEngineSound alloc] initWithPath:"resources/select.wav"];
         
-        id<NSEngineResource> font =             [[NSFont alloc] initWithPathEx:"resources/font.otf" andFontSize:64 andCodePoints:{}];
+        id<NSEngineResource> font =             [[NSEngineFont alloc] initWithPathEx:"resources/font.otf" andFontSize:64 andCodePoints:{}];
         
-        id<NSEngineResource> egg =            [[NSImage alloc] initWithPath:"resources/egg.png"];
+        id<NSEngineResource> egg =            [[NSEngineImage alloc] initWithPath:"resources/egg.png"];
         
         std::vector<Platform*> platforms = {
             [[Platform alloc] initWithIndex:0],

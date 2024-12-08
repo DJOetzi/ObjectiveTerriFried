@@ -6,7 +6,7 @@
 #include <iostream>
 #include <raylib.h>
 
-@interface NSImage : NSObject <NSEngineResource>
+@interface NSEngineImage : NSObject <NSEngineResource>
     @property (nonatomic) Image rawImg;
 
     // Constructors

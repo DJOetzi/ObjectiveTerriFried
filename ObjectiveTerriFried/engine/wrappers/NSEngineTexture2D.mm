@@ -1,8 +1,8 @@
-#import "include/NSTexture2D.hpp"
+#import "include/NSEngineTexture2D.hpp"
 
 #include <raylib.h>
 
-@implementation NSTexture2D : NSObject
+@implementation NSEngineTexture2D : NSObject
     - (id) initWithPath : (std::string) path {
         if ( self = [super init] ) {
             _rawTex = LoadTexture(path.c_str());
