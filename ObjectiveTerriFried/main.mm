@@ -7,12 +7,14 @@
 
 #import "engine/utility/include/Constants.hpp"
 #import "engine/utility/include/SaveManager.hpp"
+#include "engine/utility/include/Utility.hpp"
 
 #import "engine/wrappers/include/NSEngineTexture2D.hpp"
 #import "engine/wrappers/include/NSEngineSound.hpp"
 #import "engine/wrappers/include/NSEngineFont.hpp"
 #import "engine/wrappers/include/NSEngineImage.hpp"
 
+auto resetGame(ScoreManager*, std::vector<Platform*>&, Player*) -> void;
 
 auto main(int argc, const char* argv[]) -> int {
     TraceLog(LOG_DEBUG, ("Current Assets Directory: " + std::string(GetWorkingDirectory()) + "/resources").c_str());
@@ -100,4 +102,15 @@ auto main(int argc, const char* argv[]) -> int {
     }
     
     return 0;
+}
+
+auto resetGame(ScoreManager* scoreMan, std::vector<Platform*>& platforms, Player* player) -> void {
+    [scoreMan resetScore];
+    
+    for(int i=0; i<4; i++)
+        platforms[i] = [[Platform alloc] initWithIndex:i];
+    
+    [player setVelocity:buildVector2(0,0)];
+    [player setX:[platforms[0] getX] + [platforms[0] getWidth]/2.0 - 26/2.0];
+    [player setY:[platforms[0] getY] + [player getHeight]];
 }
