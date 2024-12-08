@@ -26,7 +26,7 @@
                     // WARNING: On binary streams SEEK_END could not be found,
                     // using fseek() and ftell() could not work in some (rare) cases
                     fseek(file, 0, SEEK_END);
-                    int size = ftell(file);
+                    long size = ftell(file);
                     fseek(file, 0, SEEK_SET);
 
                     if (size > 0)
