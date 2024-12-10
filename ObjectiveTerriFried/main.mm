@@ -44,7 +44,7 @@ auto main(int argc, const char* argv[]) -> int {
         
         id<NSEngineResource> font =             [[NSEngineFont alloc] initWithPathEx:"resources/font.otf" andFontSize:64 andCodePoints:{}];
         
-        id<NSEngineResource> egg =            [[NSEngineImage alloc] initWithPath:"resources/egg.png"];
+        id<NSEngineResource> egg =              [[NSEngineImage alloc] initWithPath:"resources/egg.png"];
         
         std::vector<Platform*> platforms = {
             [[Platform alloc] initWithIndex:0],
@@ -151,6 +151,32 @@ auto main(int argc, const char* argv[]) -> int {
                         [player setVelocity:buildVector2((GetMouseX() - mouseDownX)*.08, (GetMouseY() - mouseDownY)*.08)];
                     }
                 }
+                
+                [player checkPlayerCollision:platforms andScoreManager:scoreMan andPlayCoinFX:playCoinFX];
+                [player updatePosition];
+                
+                if([player getY] > [Constants SCREEN_HEIGHT]) {
+                    PlaySound(*(Sound*)[fxDeath getResource]);
+                    resetGame(scoreMan, platforms, player);
+                }
+                
+                for(int i=0; i<4; i++)
+                    [platforms[i] updatePosition];
+                
+                lavaY = [Constants SCREEN_HEIGHT] - 32 - sin(timer) * 5;
+                timer += .05;
+                
+                BeginDrawing();
+                {
+                    ClearBackground(ColorFromNormalized(buildRGBA(.933, .894, .882, 1.0)));
+                    if(IsMouseButtonDown(MOUSE_LEFT_BUTTON) && [player isGrounded]) {
+                        DrawLineEx(
+                                   buildVector2(mouseDownX+([player getX] - mouseDownX) + ([player getWidth]/2.0), (mouseDownY + ([player getY] - mouseDownY) + ([player getHeight]/2.0))),
+                                   buildVector2((GetMouseX() + ([player getX] - mouseDownX) + ([player getWidth]/2.0)), <#int self_y#>), <#float thick#>, Color color
+                        );
+                    }
+                }
+                EndDrawing();
             }
             //----------------------------------------------------------------------------------
         }
