@@ -102,7 +102,7 @@
             _velocity = buildVector2(-_velocity.x, _velocity.y);
     }
 
-    - (void) checkPlayerCollision : (Platform**) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX {
+    - (void) checkPlayerCollision : (std::vector<Platform*>&) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX {
         bool onPlatform = false;
         
         for(int i=0; i<4; i++) {

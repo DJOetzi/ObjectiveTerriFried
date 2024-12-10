@@ -39,5 +39,5 @@
     // misc methods
     - (bool) isGrounded;
     - (void) updatePosition;
-    - (void) checkPlayerCollision   : (Platform**) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX;
+    - (void) checkPlayerCollision   : (std::vector<Platform*>&) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX;
 @end
