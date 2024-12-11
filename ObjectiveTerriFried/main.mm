@@ -222,6 +222,6 @@ auto resetGame(ScoreManager* scoreMan, std::vector<Platform*>& platforms, Player
         platforms[i] = [[Platform alloc] initWithIndex:i];
     
     [player setVelocity:utility::buildVector2(0,0)];
-    [player setX:[platforms[0] getX] + [platforms[0] getWidth]/2.0 - 26/2.0];
-    [player setY:[platforms[0] getY] + [player getHeight]];
+    [player setX:[platforms[0] getX] + [platforms[0] getWidth]/2.0 - 26.0/2.0];
+    [player setY:[platforms[0] getY] - [player getHeight]];
 }
