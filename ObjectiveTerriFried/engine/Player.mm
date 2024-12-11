@@ -104,10 +104,13 @@
 
     - (void) checkPlayerCollision : (std::vector<Platform*>&) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX {
         bool onPlatform = false;
+        //TraceLog(LOG_WARNING, "CHECK PLAYER COLLISION - START");
         
         for(int i=0; i<4; i++) {
-            TraceLog(LOG_DEBUG, std::to_string([platforms[i] getX]).c_str());
-            TraceLog(LOG_DEBUG, std::to_string([platforms[i] getY]).c_str());
+            //TraceLog(LOG_WARNING, std::to_string([platforms[i] getX]).c_str());
+            //TraceLog(LOG_WARNING, std::to_string([platforms[i] getY]).c_str());
+            
+            //TraceLog(LOG_WARNING, (std::to_string([self getY] + [self getHeight]) + "<" + std::to_string([platforms[i] getY] + [platforms[i] getHeight])).c_str());
             
             if ([platforms[i] hasCoin] && [self getX] + [self getWidth] - 3 > [platforms[i] getCoinPos].x && [self getX] + 3 < [platforms[i] getCoinPos].x + 24 && [self getY] + [self getHeight] - 3 > [platforms[i] getCoinPos].y && [self getY] + 3 < [platforms[i] getCoinPos].y + 24)
             {
@@ -122,10 +125,12 @@
                 {
                     [self setVelocity : utility::buildVector2([self getVelocity].x, 5)];
                 }
-                else if ([self getY] + [self getHeight] <  [platforms[i] getY] + [platforms[i] getHeight])
+                else if ([self getY] + [self getHeight] < [platforms[i] getY] + [platforms[i] getHeight])
                 {
+                    //TraceLog(LOG_WARNING, "CHECK PLAYER COLLISION - DETECTION!");
+                    
                     onPlatform = true;
-                    [self setHeight:[platforms[i] getY] - [self getHeight]];
+                    [self setY:[platforms[i] getY] - [self getHeight]];
                     [self setY:[self getY] + 1];
                 }
             }
@@ -133,5 +138,6 @@
         
         [self setOnPlatform : onPlatform];
         //TraceLog(LOG_WARNING, onPlatform?"true":"false");
+        //TraceLog(LOG_WARNING, "CHECK PLAYER COLLISION - END");
     }
 @end
