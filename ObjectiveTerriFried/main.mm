@@ -96,11 +96,11 @@ auto main(int argc, const char* argv[]) -> int {
                     
                     BeginDrawing();
                     {
-                        ClearBackground(ColorFromNormalized(buildRGBA(.933, .894, .882, 1.0)));
+                        ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
                         
                         DrawTexture(*(Texture2D*)[logo getResource], [Constants SCREEN_WIDTH]/2.0, [Constants SCREEN_HEIGHT]/2.0 - 45.0 - 30, WHITE);
-                        DrawTextEx(*(Font*)[font getResource], [scoreMan getHighscoreText].c_str(), buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, BLACK);
-                        DrawTextEx(*(Font*)[font getResource], "CLICK ANYWHERE TO BEGIN", buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, BLACK);
+                        DrawTextEx(*(Font*)[font getResource], [scoreMan getHighscoreText].c_str(), utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, BLACK);
+                        DrawTextEx(*(Font*)[font getResource], "CLICK ANYWHERE TO BEGIN", utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, BLACK);
                     }
                     EndDrawing();
                     
@@ -119,8 +119,8 @@ auto main(int argc, const char* argv[]) -> int {
                     
                     BeginDrawing();
                     {
-                        ClearBackground(ColorFromNormalized(buildRGBA(.933, .894, .882, 1.0)));
-                        DrawTextEx(*(Font*)[font getResource], "POLYMARS", buildVector2([Constants SCREEN_WIDTH]/2.0 - 54.0, [Constants SCREEN_HEIGHT]/2.0 + 3.0), 32, 0, ColorFromNormalized(buildRGBA(.835, .502, .353, 1.0)));
+                        ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
+                        DrawTextEx(*(Font*)[font getResource], "POLYMARS", utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 54.0, [Constants SCREEN_HEIGHT]/2.0 + 3.0), 32, 0, ColorFromNormalized(utility::buildRGBA(.835, .502, .353, 1.0)));
                         DrawTexture(*(Texture2D*)[splashEggSprite getResource], [Constants SCREEN_WIDTH]/2.0 - 16.0, [Constants SCREEN_HEIGHT]/2.0 - 16.0 - 23.0, WHITE);
                     }
                     EndDrawing();
@@ -148,7 +148,7 @@ auto main(int argc, const char* argv[]) -> int {
                         if([player onPlatform])
                             [player setY:[player getY]-1.0];
                         
-                        [player setVelocity:buildVector2((GetMouseX() - mouseDownX)*.08, (GetMouseY() - mouseDownY)*.08)];
+                        [player setVelocity:utility::buildVector2((GetMouseX() - mouseDownX)*.08, (GetMouseY() - mouseDownY)*.08)];
                     }
                 }
                 
@@ -168,13 +168,35 @@ auto main(int argc, const char* argv[]) -> int {
                 
                 BeginDrawing();
                 {
-                    ClearBackground(ColorFromNormalized(buildRGBA(.933, .894, .882, 1.0)));
+                    ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
                     if(IsMouseButtonDown(MOUSE_LEFT_BUTTON) && [player isGrounded]) {
                         DrawLineEx(
-                                   buildVector2(mouseDownX+([player getX] - mouseDownX) + ([player getWidth]/2.0), (mouseDownY + ([player getY] - mouseDownY) + ([player getHeight]/2.0))),
-                                   buildVector2((GetMouseX() + ([player getX] - mouseDownX) + ([player getWidth]/2.0)), <#int self_y#>), <#float thick#>, Color color
+                                   utility::buildVector2(
+                                                         mouseDownX+([player getX] - mouseDownX) + ([player getWidth]/2.0),
+                                                         (mouseDownY + ([player getY] - mouseDownY) + ([player getHeight]/2.0))
+                                   ),
+                                   utility::buildVector2(
+                                                         GetMouseX() + ([player getX] - mouseDownX) + ([player getWidth]/2.0),
+                                                         GetMouseY() + ([player getY] - mouseDownY) + ([player getHeight]/2.0)
+                                   ),
+                                   3.0,
+                                   ColorFromNormalized(utility::buildRGBA(.906, .847, .788, 1.0))
                         );
                     }
+                    
+                    for(int i=0; i<4; i++) {
+                        DrawTexture(*(Texture2D*)[platformSprite getResource], [platforms[i] getX], [platforms[i] getY], ColorFromNormalized(utility::buildRGBA(.698, .588, .49, 1.0)));
+                        
+                        if([platforms[i] hasCoin])
+                            DrawTexture(*(Texture2D*)[coinSprite getResource], [platforms[i] getCoinPos].x, [platforms[i] getCoinPos].y, WHITE);
+                    }
+                    
+                    DrawTexture(*(Texture2D*)[playerSprite getResource], [player getX], [player getY], WHITE);
+                    DrawTexture(*(Texture2D*)[lavaSprite getResource], 0, lavaY, WHITE);
+                    DrawTexture(*(Texture2D*)[scoreBoxSprite getResource], 17, 17, WHITE);
+                    
+                    DrawTextEx(*(Font*)[font getResource], [scoreMan score].c_str(), utility::buildVector2(28, 20), 64, 0, BLACK);
+                    DrawTextEx(*(Font*)[font getResource], [scoreMan highscore].c_str(), utility::buildVector2(17, 90), 32, 0, BLACK);
                 }
                 EndDrawing();
             }
@@ -196,7 +218,7 @@ auto resetGame(ScoreManager* scoreMan, std::vector<Platform*>& platforms, Player
     for(int i=0; i<4; i++)
         platforms[i] = [[Platform alloc] initWithIndex:i];
     
-    [player setVelocity:buildVector2(0,0)];
+    [player setVelocity:utility::buildVector2(0,0)];
     [player setX:[platforms[0] getX] + [platforms[0] getWidth]/2.0 - 26/2.0];
     [player setY:[platforms[0] getY] + [player getHeight]];
 }
