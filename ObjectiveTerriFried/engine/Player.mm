@@ -13,7 +13,7 @@
             _width = 0;
             _height = 0;
             _onPlatform = 0;
-            _velocity = buildVector2(0, 0);
+            _velocity = utility::buildVector2(0, 0);
         }
         return self;
     }
@@ -91,15 +91,15 @@
         _y += _velocity.y;
         
         if (![self isGrounded])
-            _velocity = buildVector2(_velocity.x, _velocity.y + [Constants GRAVITY]);
+            _velocity = utility::buildVector2(_velocity.x, _velocity.y + [Constants GRAVITY]);
         else
-            _velocity = buildVector2(0, 0);
+            _velocity = utility::buildVector2(0, 0);
         
         if (_x < 0)
-            _velocity = buildVector2(-_velocity.x, _velocity.y);
+            _velocity = utility::buildVector2(-_velocity.x, _velocity.y);
         
         if (_x + _width > 800)
-            _velocity = buildVector2(-_velocity.x, _velocity.y);
+            _velocity = utility::buildVector2(-_velocity.x, _velocity.y);
     }
 
     - (void) checkPlayerCollision : (std::vector<Platform*>&) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX {
@@ -117,7 +117,7 @@
             {
                 if ([self getY] > [platforms[i] getY] + [platforms[i] getHeight]/2.0)
                 {
-                    [self setVelocity : buildVector2([self getVelocity].x, 5)];
+                    [self setVelocity : utility::buildVector2([self getVelocity].x, 5)];
                 }
                 else if ([self getY] + [self getHeight] <  [platforms[i] getY] + [platforms[i] getHeight])
                 {
