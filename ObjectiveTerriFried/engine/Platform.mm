@@ -13,7 +13,7 @@
             _y = 0 - _height - (index * 100);
         
             _coinState = (((rand() % 4) == 0 || index == 0) ? false : true);
-            _coinPos = buildVector2(
+            _coinPos = utility::buildVector2(
                                         _x + _width/2 - 24/2,
                                         _y - 24 - 5
                            );
@@ -74,7 +74,7 @@
     - (void) updatePosition {
         _y += 1;
         
-        _coinPos = buildVector2(_x + _width/2 - 24/2, _y - 24 - 5);
+        _coinPos = utility::buildVector2(_x + _width/2 - 24/2, _y - 24 - 5);
         
         if (_y > [Constants SCREEN_HEIGHT]) {
             _x = rand() % 660 + 20;
