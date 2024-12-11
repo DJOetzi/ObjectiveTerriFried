@@ -96,11 +96,12 @@ auto main(int argc, const char* argv[]) -> int {
                     
                     BeginDrawing();
                     {
-                        ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
+                        ClearBackground(ColorFromNormalized((Vector4){0.933, 0.894, 0.882, 1.0}));
+                        //ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
                         
                         DrawTexture(*(Texture2D*)[logo getResource], [Constants SCREEN_WIDTH]/2.0, [Constants SCREEN_HEIGHT]/2.0 - 45.0 - 30, WHITE);
                         DrawTextEx(*(Font*)[font getResource], [scoreMan getHighscoreText].c_str(), utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, BLACK);
-                        DrawTextEx(*(Font*)[font getResource], "CLICK ANYWHERE TO BEGIN", utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, BLACK);
+                        DrawTextEx(*(Font*)[font getResource], "CLICK ANYWHERE TO BEGIN", utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, ColorFromNormalized(utility::buildRGBA(.698, .588, .49, 0.4)));
                     }
                     EndDrawing();
                     
@@ -119,7 +120,8 @@ auto main(int argc, const char* argv[]) -> int {
                     
                     BeginDrawing();
                     {
-                        ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
+                        ClearBackground(ColorFromNormalized((Vector4){0.933, 0.894, 0.882, 1.0}));
+                        //ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
                         DrawTextEx(*(Font*)[font getResource], "POLYMARS", utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 54.0, [Constants SCREEN_HEIGHT]/2.0 + 3.0), 32, 0, ColorFromNormalized(utility::buildRGBA(.835, .502, .353, 1.0)));
                         DrawTexture(*(Texture2D*)[splashEggSprite getResource], [Constants SCREEN_WIDTH]/2.0 - 16.0, [Constants SCREEN_HEIGHT]/2.0 - 16.0 - 23.0, WHITE);
                     }
@@ -168,7 +170,8 @@ auto main(int argc, const char* argv[]) -> int {
                 
                 BeginDrawing();
                 {
-                    ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
+                    ClearBackground(ColorFromNormalized((Vector4){0.933, 0.894, 0.882, 1.0}));
+                    //ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
                     if(IsMouseButtonDown(MOUSE_LEFT_BUTTON) && [player isGrounded]) {
                         DrawLineEx(
                                    utility::buildVector2(
