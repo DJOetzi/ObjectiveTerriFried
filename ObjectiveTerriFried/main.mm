@@ -122,7 +122,7 @@ auto main(int argc, const char* argv[]) -> int {
                     {
                         ClearBackground(ColorFromNormalized((Vector4){0.933, 0.894, 0.882, 1.0}));
                         //ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
-                        DrawTextEx(*(Font*)[font getResource], "POLYMARS", utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 54.0, [Constants SCREEN_HEIGHT]/2.0 + 3.0), 32, 0, ColorFromNormalized(utility::buildRGBA(.835, .502, .353, 1.0)));
+                        DrawTextEx(*(Font*)[font getResource], "POLYMARS", utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 54.0, [Constants SCREEN_HEIGHT]/2.0 + 3.0), 32, 0, ColorFromNormalized((Vector4){.835, .502, .353, 1.0}));
                         DrawTexture(*(Texture2D*)[splashEggSprite getResource], [Constants SCREEN_WIDTH]/2.0 - 16.0, [Constants SCREEN_HEIGHT]/2.0 - 16.0 - 23.0, WHITE);
                     }
                     EndDrawing();
@@ -183,7 +183,7 @@ auto main(int argc, const char* argv[]) -> int {
                                                          GetMouseY() + ([player getY] - mouseDownY) + ([player getHeight]/2.0)
                                    ),
                                    3.0,
-                                   ColorFromNormalized(utility::buildRGBA(.906, .847, .788, 1.0))
+                                   ColorFromNormalized((Vector4){.698, .588, .49, 1.0})
                         );
                     }
                     
