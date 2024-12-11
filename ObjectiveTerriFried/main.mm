@@ -99,9 +99,9 @@ auto main(int argc, const char* argv[]) -> int {
                         ClearBackground(ColorFromNormalized((Vector4){0.933, 0.894, 0.882, 1.0}));
                         //ClearBackground(ColorFromNormalized(utility::buildRGBA(.933, .894, .882, 1.0)));
                         
-                        DrawTexture(*(Texture2D*)[logo getResource], [Constants SCREEN_WIDTH]/2.0, [Constants SCREEN_HEIGHT]/2.0 - 45.0 - 30, WHITE);
+                        DrawTexture(*(Texture2D*)[logo getResource], [Constants SCREEN_WIDTH]/4.0, [Constants SCREEN_HEIGHT]/2.0 - 45.0 - 30.0, WHITE);
                         DrawTextEx(*(Font*)[font getResource], [scoreMan getHighscoreText].c_str(), utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, BLACK);
-                        DrawTextEx(*(Font*)[font getResource], "CLICK ANYWHERE TO BEGIN", utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 37.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, ColorFromNormalized(utility::buildRGBA(.698, .588, .49, 0.4)));
+                        DrawTextEx(*(Font*)[font getResource], "CLICK ANYWHERE TO BEGIN", utility::buildVector2([Constants SCREEN_WIDTH]/2.0 - 134.0, [Constants SCREEN_HEIGHT]/2.0 + 10), 32, 0, /*ColorFromNormalized(utility::buildRGBA(.698, .588, .49, 0.4))*/ColorFromNormalized((Vector4){.698, .588, .49, 0.4}));
                     }
                     EndDrawing();
                     
@@ -188,7 +188,7 @@ auto main(int argc, const char* argv[]) -> int {
                     }
                     
                     for(int i=0; i<4; i++) {
-                        DrawTexture(*(Texture2D*)[platformSprite getResource], [platforms[i] getX], [platforms[i] getY], ColorFromNormalized(utility::buildRGBA(.698, .588, .49, 1.0)));
+                        DrawTexture(*(Texture2D*)[platformSprite getResource], [platforms[i] getX], [platforms[i] getY], /*ColorFromNormalized(utility::buildRGBA(.698, .588, .49, 1.0))*/ColorFromNormalized((Vector4){.698, .588, .49, 1.0}));
                         
                         if([platforms[i] hasCoin])
                             DrawTexture(*(Texture2D*)[coinSprite getResource], [platforms[i] getCoinPos].x, [platforms[i] getCoinPos].y, WHITE);
