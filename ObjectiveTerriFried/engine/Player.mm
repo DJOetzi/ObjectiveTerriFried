@@ -106,6 +106,9 @@
         bool onPlatform = false;
         
         for(int i=0; i<4; i++) {
+            TraceLog(LOG_DEBUG, std::to_string([platforms[i] getX]).c_str());
+            TraceLog(LOG_DEBUG, std::to_string([platforms[i] getY]).c_str());
+            
             if ([platforms[i] hasCoin] && [self getX] + [self getWidth] - 3 > [platforms[i] getCoinPos].x && [self getX] + 3 < [platforms[i] getCoinPos].x + 24 && [self getY] + [self getHeight] - 3 > [platforms[i] getCoinPos].y && [self getY] + 3 < [platforms[i] getCoinPos].y + 24)
             {
                 [scoreMan addScore : 1];
@@ -129,5 +132,6 @@
         }
         
         [self setOnPlatform : onPlatform];
+        //TraceLog(LOG_WARNING, onPlatform?"true":"false");
     }
 @end
