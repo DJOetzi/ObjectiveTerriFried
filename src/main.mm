@@ -34,16 +34,16 @@ auto main(int argc, const char* argv[]) -> int {
         id<NSEngineResource> scoreBoxSprite =   [[NSEngineTexture2D alloc] initWithPath:"resources/scorebox.png"];
         id<NSEngineResource> logo =             [[NSEngineTexture2D alloc] initWithPath:"resources/logo.png"];
         id<NSEngineResource> splashEggSprite =  [[NSEngineTexture2D alloc] initWithPath:"resources/splash_egg.png"];
-        
+
         id<NSEngineResource> fxLaunch =         [[NSEngineSound alloc] initWithPath:"resources/launch.wav"];
         id<NSEngineResource> fxClick =          [[NSEngineSound alloc] initWithPath:"resources/click.wav"];
         id<NSEngineResource> fxDeath =          [[NSEngineSound alloc] initWithPath:"resources/die.wav"];
         id<NSEngineResource> fxCoin =           [[NSEngineSound alloc] initWithPath:"resources/coin.wav"];
         id<NSEngineResource> fxSplash =         [[NSEngineSound alloc] initWithPath:"resources/splash.wav"];
         id<NSEngineResource> fxSelect =         [[NSEngineSound alloc] initWithPath:"resources/select.wav"];
-        
+
         id<NSEngineResource> font =             [[NSEngineFont alloc] initWithPathEx:"resources/font.otf" andFontSize:64 andCodePoints:{}];
-        
+
         id<NSEngineResource> egg =              [[NSEngineImage alloc] initWithPath:"resources/egg.png"];
         
         std::vector<Platform*> platforms = {
@@ -205,12 +205,11 @@ auto main(int argc, const char* argv[]) -> int {
             }
             //----------------------------------------------------------------------------------
         }
-        
-        
-        CloseAudioDevice();     // Close Miniaudio Context
-        CloseWindow();          // Close window and OpenGL context
-        //--------------------------------------------------------------------------------------
     }
+
+    CloseAudioDevice();     // Close Miniaudio Context
+    CloseWindow();          // Close window and OpenGL context
+    //--------------------------------------------------------------------------------------
     
     return 0;
 }
