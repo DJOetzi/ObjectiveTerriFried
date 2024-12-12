@@ -6,8 +6,10 @@
 #include <iostream>
 #include <raylib.h>
 
-@interface NSEngineSound : NSObject<NSEngineResource>
-    @property (nonatomic) Sound rawSound;
+@interface NSEngineTexture2D : NSObject <NSEngineResource>
+    {
+        Texture2D rawTex;
+    }
 
     // Constructors
     - (id) initWithPath : (std::string) path;

@@ -147,7 +147,7 @@ auto main(int argc, const char* argv[]) -> int {
                     else {
                         PlaySound(*(Sound*)[fxLaunch getResource]);
                         
-                        if([player onPlatform])
+                        if([player getOnPlatform])
                             [player setY:[player getY]-1.0];
                         
                         [player setVelocity:utility::buildVector2((GetMouseX() - mouseDownX)*.08, (GetMouseY() - mouseDownY)*.08)];
@@ -198,8 +198,8 @@ auto main(int argc, const char* argv[]) -> int {
                     DrawTexture(*(Texture2D*)[lavaSprite getResource], 0, lavaY, WHITE);
                     DrawTexture(*(Texture2D*)[scoreBoxSprite getResource], 17, 17, WHITE);
                     
-                    DrawTextEx(*(Font*)[font getResource], [scoreMan score].c_str(), utility::buildVector2(28, 20), 64, 0, BLACK);
-                    DrawTextEx(*(Font*)[font getResource], [scoreMan highscore].c_str(), utility::buildVector2(17, 90), 32, 0, BLACK);
+                    DrawTextEx(*(Font*)[font getResource], [scoreMan getScoreText].c_str(), utility::buildVector2(28, 20), 64, 0, BLACK);
+                    DrawTextEx(*(Font*)[font getResource], [scoreMan getHighscoreText].c_str(), utility::buildVector2(17, 90), 32, 0, BLACK);
                 }
                 EndDrawing();
             }

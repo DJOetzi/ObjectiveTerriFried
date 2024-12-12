@@ -1,20 +1,23 @@
 #pragma once
 
 #import <Foundation/Foundation.h>
+#include <vector>
+#include <raylib.h>
+
 #import "Platform.hpp"
 #import "ScoreManager.hpp"
 
-#include <raylib.h>
-
 @interface Player : NSObject
-    @property (nonatomic) double x;
-    @property (nonatomic) double y;
+    {
+        double x;
+        double y;
 
-    @property (nonatomic) int width;
-    @property (nonatomic) int height;
+        int width;
+        int height;
 
-    @property (nonatomic) bool onPlatform;
-    @property (nonatomic) Vector2 velocity;
+        bool onPlatform;
+        Vector2 velocity;
+    }
 
     // constructors
     - (id) init;

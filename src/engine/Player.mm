@@ -1,4 +1,4 @@
-#import "Player.hpp"
+#import "include/Player.hpp"
 #include "utility/include/Utility.hpp"
 #import "utility/include/Constants.hpp"
 
@@ -7,78 +7,78 @@
     // constructors
     - (id) init {
         if ( self = [super init] ) {
-            _x = 0;
-            _y = 0;
+            x = 0;
+            y = 0;
             
-            _width = 0;
-            _height = 0;
-            _onPlatform = 0;
-            _velocity = utility::buildVector2(0, 0);
+            width = 0;
+            height = 0;
+            onPlatform = 0;
+            velocity = utility::buildVector2(0, 0);
         }
         return self;
     }
 
     - (id) initWithParams : (double)xinit andYinit : (double)yinit andWidthinit : (int) widthinit andHeightinit : (int) heightinit {
         if ( self = [super init] ) {
-            _x = xinit;
-            _y = yinit;
+            x = xinit;
+            y = yinit;
             
-            _width = widthinit;
-            _height = heightinit;
-            //_onPlatform = onPlatforminit;
-            //_velocity = velocityinit;
+            width = widthinit;
+            height = heightinit;
+            //onPlatform = onPlatforminit;
+            //velocity = velocityinit;
         }
         return self;
     }
 
     // getters
     - (double) getX {
-        return _x;
+        return x;
     }
     
     - (double) getY {
-        return _y;
+        return y;
     }
     
     - (int) getWidth {
-        return _width;
+        return width;
     }
 
     - (int) getHeight {
-        return _height;
+        return height;
     }
 
     - (bool) getOnPlatform {
-        return _onPlatform;
+        return onPlatform;
     }
     
     - (Vector2) getVelocity {
-        return _velocity;
+        return velocity;
     }
 
     // setters
     - (void) setX : (double)xinit {
-        _x = xinit;
+        x = xinit;
     }
     
     - (void) setY : (double)yinit {
-        _y = yinit;
+        y = yinit;
     }
 
     - (void) setWidth : (int)widthinit {
-        _width = widthinit;
+        width = widthinit;
     }
 
     - (void) setHeight : (int)heightinit {
-        _height = heightinit;
+        height = heightinit;
     }
 
     - (void) setOnPlatform : (bool)onPlatforminit {
-        _onPlatform = onPlatforminit;
+        onPlatform = onPlatforminit;
     }
 
     - (void) setVelocity : (Vector2)velocityinit {
-        _velocity = velocityinit;
+        velocity = velocityinit;
     }
 
     // misc methods
@@ -87,30 +87,30 @@
     }
 
     - (void) updatePosition {
-        _x += _velocity.x;
-        _y += _velocity.y;
+        x += velocity.x;
+        y += velocity.y;
         
         if (![self isGrounded])
-            _velocity = utility::buildVector2(_velocity.x, _velocity.y + [Constants GRAVITY]);
+            velocity = utility::buildVector2(velocity.x, velocity.y + [Constants GRAVITY]);
         else
-            _velocity = utility::buildVector2(0, 0);
+            velocity = utility::buildVector2(0, 0);
         
-        if (_x < 0)
-            _velocity = utility::buildVector2(-_velocity.x, _velocity.y);
+        if (x < 0)
+            velocity = utility::buildVector2(-velocity.x, velocity.y);
         
-        if (_x + _width > 800)
-            _velocity = utility::buildVector2(-_velocity.x, _velocity.y);
+        if (x + width > 800)
+            velocity = utility::buildVector2(-velocity.x, velocity.y);
     }
 
     - (void) checkPlayerCollision : (std::vector<Platform*>&) platforms andScoreManager : (ScoreManager*)scoreMan andPlayCoinFX : (bool&) playCoinFX {
-        bool onPlatform = false;
-        //TraceLog(LOG_WARNING, "CHECK PLAYER COLLISION - START");
+        bool currOnPlatform = false;
+        //TraceLog(LOGWARNING, "CHECK PLAYER COLLISION - START");
         
         for(int i=0; i<4; i++) {
-            //TraceLog(LOG_WARNING, std::to_string([platforms[i] getX]).c_str());
-            //TraceLog(LOG_WARNING, std::to_string([platforms[i] getY]).c_str());
+            //TraceLog(LOGWARNING, std::tostring([platforms[i] getX]).cstr());
+            //TraceLog(LOGWARNING, std::tostring([platforms[i] getY]).cstr());
             
-            //TraceLog(LOG_WARNING, (std::to_string([self getY] + [self getHeight]) + "<" + std::to_string([platforms[i] getY] + [platforms[i] getHeight])).c_str());
+            //TraceLog(LOGWARNING, (std::tostring([self getY] + [self getHeight]) + "<" + std::tostring([platforms[i] getY] + [platforms[i] getHeight])).cstr());
             
             if ([platforms[i] hasCoin] && [self getX] + [self getWidth] - 3 > [platforms[i] getCoinPos].x && [self getX] + 3 < [platforms[i] getCoinPos].x + 24 && [self getY] + [self getHeight] - 3 > [platforms[i] getCoinPos].y && [self getY] + 3 < [platforms[i] getCoinPos].y + 24)
             {
@@ -127,17 +127,17 @@
                 }
                 else if ([self getY] + [self getHeight] < [platforms[i] getY] + [platforms[i] getHeight])
                 {
-                    //TraceLog(LOG_WARNING, "CHECK PLAYER COLLISION - DETECTION!");
-                    
-                    onPlatform = true;
+                    //TraceLog(LOGWARNING, "CHECK PLAYER COLLISION - DETECTION!");
+
+                    currOnPlatform = true;
                     [self setY:[platforms[i] getY] - [self getHeight]];
                     [self setY:[self getY] + 1];
                 }
             }
         }
         
-        [self setOnPlatform : onPlatform];
-        //TraceLog(LOG_WARNING, onPlatform?"true":"false");
-        //TraceLog(LOG_WARNING, "CHECK PLAYER COLLISION - END");
+        [self setOnPlatform : currOnPlatform];
+        //TraceLog(LOGWARNING, onPlatform?"true":"false");
+        //TraceLog(LOGWARNING, "CHECK PLAYER COLLISION - END");
     }
 @end

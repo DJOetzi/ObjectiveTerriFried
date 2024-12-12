@@ -7,7 +7,9 @@
 #include <raylib.h>
 
 @interface NSEngineImage : NSObject <NSEngineResource>
-    @property (nonatomic) Image rawImg;
+    {
+        Image rawImg;
+    }
 
     // Constructors
     - (id) initWithPath : (std::string) path;

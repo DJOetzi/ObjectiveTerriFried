@@ -4,10 +4,13 @@
 #import "../Protocols/NSEngineResource.hpp"
 
 #include <iostream>
+#include <vector>
 #include <raylib.h>
 
 @interface NSEngineFont : NSObject<NSEngineResource>
-    @property (nonatomic) Font rawFont;
+    {
+        Font rawFont;
+    }
 
     // Constructors
     - (id) initWithPath     : (std::string) path;

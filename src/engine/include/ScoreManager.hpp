@@ -6,10 +6,12 @@
 
 
 @interface ScoreManager : NSObject
-    @property (nonatomic) int scoreInt;
-    @property (nonatomic) int highscoreInt;
-    @property (nonatomic) std::string score;
-    @property (nonatomic) std::string highscore;
+    {
+        int scoreInt;
+        int highscoreInt;
+        std::string score;
+        std::string highscore;
+    }
 
     // constructors
     - (id) init;

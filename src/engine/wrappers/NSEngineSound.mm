@@ -6,18 +6,18 @@
     // Constructors
     - (id) initWithPath : (std::string) path {
         if ( self = [super init] ) {
-            _rawSound = LoadSound(path.c_str());
+            rawSound = LoadSound(path.c_str());
         }
         return self;
     }
 
     // Destructor
     - (void) dealloc {
-        UnloadSound(_rawSound);
+        UnloadSound(rawSound);
     }
 
     // methods
     - (void* const) getResource {
-        return &_rawSound;
+        return &rawSound;
     }
 @end

@@ -4,13 +4,14 @@
 #include <raylib.h>
 
 @interface Platform : NSObject
-    @property (nonatomic) double x;
-    @property (nonatomic) double y;
-    @property (nonatomic) int width;
-    @property (nonatomic) int height;
-    @property (nonatomic) bool coinState;
-    @property (nonatomic) Vector2 coinPos;
-
+    {
+        double x;
+        double y;
+        int width;
+        int height;
+        bool coinState;
+        Vector2 coinPos;
+    }
     // constructors
     - (id) initWithIndex : (int)index;
     

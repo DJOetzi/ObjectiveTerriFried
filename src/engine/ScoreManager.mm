@@ -8,70 +8,70 @@
     // constructors
     - (id) init {
         if ( self = [super init] ) {
-            _scoreInt = 0;
-            _highscoreInt = 0;
-            _score = "";
-            _highscore = "";
+            scoreInt = 0;
+            highscoreInt = 0;
+            score = "";
+            highscore = "";
         }
         return self;
     }
 
     // getters
     - (int) getScoreInt {
-        return _scoreInt;
+        return scoreInt;
     }
 
     - (int) getHighscoreInt {
-        return _highscoreInt;
+        return highscoreInt;
     }
     - (std::string) getScoreText {
-        return _score;
+        return score;
     }
     - (std::string) getHighscoreText {
-        return _highscore;
+        return highscore;
     }
 
     // setters
     - (void) setScoreInt     :  (int)scoreIntinit {
-        _scoreInt = scoreIntinit;
+        scoreInt = scoreIntinit;
     }
     - (void) setHighscoreInt :  (int)highscoreIntinit {
-        _highscoreInt = highscoreIntinit;
+        highscoreInt = highscoreIntinit;
     }
     - (void) setHighscore    :  (std::string)highscoreinit {
-        _highscore = highscoreinit;
+        highscore = highscoreinit;
     }
     - (void) setScore        :  (std::string)scoreinit {
-        _score = scoreinit;
+        score = scoreinit;
     }
 
     // functionality
     - (void) addScore        : (int)amount {
-        _scoreInt += amount;
+        scoreInt += amount;
         
-        std::string numcache = std::to_string(_scoreInt);
+        std::string numcache = std::to_string(scoreInt);
         
-        if (_scoreInt < 10) {
-            _score = "00" + numcache;
+        if (scoreInt < 10) {
+            score = "00" + numcache;
         }
-        else if (_scoreInt) {
-            _score = "0" + numcache;
+        else if (scoreInt) {
+            score = "0" + numcache;
         }
         else {
-            _score = numcache;
+            score = numcache;
         }
         
-        if (_scoreInt > _highscoreInt) {
-            _highscoreInt = _scoreInt;
+        if (scoreInt > highscoreInt) {
+            highscoreInt = scoreInt;
             
-            _highscore = "BEST: " + std::to_string(_highscoreInt);
+            highscore = "BEST: " + std::to_string(highscoreInt);
         }
     }
 
     - (void) resetScore {
-        _scoreInt = 0;
-        _score = "00" + std::to_string(_scoreInt);
-        [SaveManager saveStorageValue:0 andValue:_highscoreInt];
+        scoreInt = 0;
+        score = "00" + std::to_string(scoreInt);
+        [SaveManager saveStorageValue:0 andValue:highscoreInt];
     }
 @end
 
