@@ -13,7 +13,7 @@
 
     - (id) initWithPathEx : (std::string) path andFontSize : (int) fontSize andCodePoints : (std::vector<int>) codepoints {
         if ( self = [super init] ) {
-            _rawFont = LoadFontEx(path.c_str(), fontSize, codepoints.data(), codepoints.size());
+            _rawFont = LoadFontEx(path.c_str(), fontSize, codepoints.data(), (int)codepoints.size());
         }
         return self;
     }
