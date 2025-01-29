@@ -78,7 +78,7 @@ auto main(int argc, const char* argv[]) -> int {
         SetWindowIcon(*(Image*)[egg getResource]);
         SetMasterVolume(0.3f);
 
-        SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+        SetTargetFPS(60);               // Set game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
         
 
